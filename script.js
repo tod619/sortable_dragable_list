@@ -28,6 +28,7 @@ function createList() {
     .forEach((person,idx) => {
         const listItem = document.createElement('li')
 
+
         listItem.setAttribute('data-index',idx)
 
         listItem.innerHTML = `

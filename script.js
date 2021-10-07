@@ -43,6 +43,46 @@ function createList() {
 
         draggable_list.appendChild(listItem)
     })
+
+    addEventListners()
+}
+
+// Add eventlistners to each draggable item
+function addEventListners() {
+    const draggables = document.querySelectorAll('.draggable')
+    const dragListItems = document.querySelectorAll('.draggable-list li')
+
+    draggables.forEach(draggable => {
+        draggable.addEventListener('dragstart', dragStart)
+    })
+
+    dragListItems.forEach(item => {
+        item.addEventListener('dragover', dragOver)
+        item.addEventListener('drop', dragDrop)
+        item.addEventListener('dragenter', dragEnter)
+        item.addEventListener('dragleave', dragLeave)
+    })
+}
+
+// drag behaviour functions
+function dragStart(){
+    console.log('start')
+}
+
+function dragOver(){
+    console.log('dragOver')
+}
+
+function dragDrop(){
+    console.log('dragDrop')
+}
+
+function dragEnter(){
+    console.log('dragEnter')
+}
+
+function dragLeave() {
+    console.log('dragLeave')
 }
 
 createList()

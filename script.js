@@ -47,6 +47,20 @@ function createList() {
     addEventListners()
 }
 
+// check the order of the list against the original unsorted list
+function checkOrder() {
+    listItems.forEach((listItem,index) => {
+        const personName = listItem.querySelector('.draggable').innerText.trim()
+        
+        if(personName !== richestPeople[index]) {
+            listItem.classList.add('wrong')
+        }else {
+            listItem.classList.remove('wrong')
+            listItem.classList.add('right')
+        }
+    })
+}
+
 // Add eventlistners to each draggable item
 function addEventListners() {
     const draggables = document.querySelectorAll('.draggable')
@@ -68,7 +82,7 @@ function addEventListners() {
 function dragStart(){
     // console.log('start')
     dragStartIndex = +this.closest('li').getAttribute('data-index')
-    console.log(dragStartIndex)
+    
 }
 
 function dragOver(e){
@@ -95,6 +109,7 @@ function dragLeave() {
     this.classList.remove('over')
 }
 
+// Swap Items that are dragged and dropped
 function swapItems(fromIndex, toIndex){
     const itemOne = listItems[fromIndex].querySelector('.draggable')
     const itemTwo = listItems[toIndex].querySelector('.draggable')
@@ -102,6 +117,8 @@ function swapItems(fromIndex, toIndex){
     listItems[fromIndex].appendChild(itemTwo)
     listItems[toIndex].appendChild(itemOne)
 }
+
+checkBtn.addEventListener('click', checkOrder)
 
 createList()
 

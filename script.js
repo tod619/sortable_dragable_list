@@ -78,11 +78,13 @@ function dragDrop(){
 }
 
 function dragEnter(){
-    console.log('dragEnter')
+    // console.log('dragEnter')
+    this.classList.add('over')
 }
 
 function dragLeave() {
-    console.log('dragLeave')
+    // console.log('dragLeave')
+    this.classList.remove('over')
 }
 
 createList()

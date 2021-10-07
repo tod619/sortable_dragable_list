@@ -66,15 +66,23 @@ function addEventListners() {
 
 // drag behaviour functions
 function dragStart(){
-    console.log('start')
+    // console.log('start')
+    dragStartIndex = +this.closest('li').getAttribute('data-index')
+    console.log(dragStartIndex)
 }
 
-function dragOver(){
-    console.log('dragOver')
+function dragOver(e){
+    //console.log('dragOver')
+    e.preventDefault()
 }
 
 function dragDrop(){
-    console.log('dragDrop')
+    // console.log('dragDrop')
+    const dragEndIndex = +this.getAttribute('data-index')
+    swapItems(dragStartIndex,dragEndIndex)
+
+    this.classList.remove('over')
+
 }
 
 function dragEnter(){
@@ -85,6 +93,14 @@ function dragEnter(){
 function dragLeave() {
     // console.log('dragLeave')
     this.classList.remove('over')
+}
+
+function swapItems(fromIndex, toIndex){
+    const itemOne = listItems[fromIndex].querySelector('.draggable')
+    const itemTwo = listItems[toIndex].querySelector('.draggable')
+
+    listItems[fromIndex].appendChild(itemTwo)
+    listItems[toIndex].appendChild(itemOne)
 }
 
 createList()
